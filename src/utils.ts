@@ -1,4 +1,4 @@
-import { SET_DISCOUNT } from "./constant";
+import { BLACK_SET_DISCOUNT, SET_DISCOUNT } from "./constant";
 
 export enum SetColors {
     RED_SET = 'RED_SET',
@@ -7,7 +7,8 @@ export enum SetColors {
     YELLOW_SET = 'YELLOW_SET',
     PINK_SET = 'PINK_SET',
     PURPLE_SET = 'PURPLE_SET',
-    ORANGE_SET = 'ORANGE_SET'
+    ORANGE_SET = 'ORANGE_SET',
+    BLACK_SET= 'BLACK_SET'
 }
 
 export const getPricePerSet = (set: SetColors): number => {
@@ -19,13 +20,19 @@ export const getPricePerSet = (set: SetColors): number => {
         case SetColors.PINK_SET: return 80;
         case SetColors.PURPLE_SET: return 90;
         case SetColors.ORANGE_SET: return 120;
+        case SetColors.BLACK_SET : return 500;
         default: return 0;
     }
 }
 
 export const getDiscountSet = (setColor: SetColors) => {
     const eligibleSets = [SetColors.ORANGE_SET, SetColors.PINK_SET, SetColors.GREEN_SET];
-    return eligibleSets.includes(setColor) ? SET_DISCOUNT : 0;
+    if(eligibleSets.includes(setColor))
+       return SET_DISCOUNT
+    else if(setColor === SetColors.BLACK_SET)
+       return BLACK_SET_DISCOUNT
+    else
+       return 0;
 }
 
 export const checkInput = (value: number) => {

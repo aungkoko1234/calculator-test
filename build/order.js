@@ -14,6 +14,7 @@ var Order = /** @class */ (function () {
         var discount = this.checkMemberDiscount();
         var totalValue = this.setItems.map(function (item) { return item.calulate(); })
             .reduce(function (curResult, item) { return curResult + item; }, 0);
+        console.log("The total Value", totalValue);
         return totalValue - (totalValue * discount);
     };
     return Order;

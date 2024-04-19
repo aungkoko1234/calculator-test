@@ -30,3 +30,20 @@ describe('Set Item With Bundle Discount', () => {
         expect(setItem.calulate()).toEqual(536)
     })
 })
+
+describe('Black Set Item with Bundle Discount',()=> {
+    test('Set Item with 3-multiplicible quantity',()=> {
+        const setItem = new SetItem(SetColors.BLACK_SET,3)
+        expect(setItem.calulate()).toEqual(1350)
+    })
+
+    test('Set Item with 3-multiplicible quantity',()=> {
+        const setItem = new SetItem(SetColors.BLACK_SET,6)
+        expect(setItem.calulate()).toEqual(2700)
+    })
+
+    test('Set Item with not 3-multiplicible quantity',()=> {
+        const setItem = new SetItem(SetColors.BLACK_SET,2)
+        expect(setItem.calulate()).toEqual(1000)
+    })
+})

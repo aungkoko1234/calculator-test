@@ -9,7 +9,10 @@ var SetItem = /** @class */ (function () {
     }
     SetItem.prototype.getBundleDiscount = function (setPrice) {
         var discount = (0, utils_1.getDiscountSet)(this.setColor);
-        return setPrice * 2 * Math.floor(this.quantity / 2) * discount;
+        if (this.setColor === utils_1.SetColors.BLACK_SET)
+            return setPrice * 3 * Math.floor(this.quantity / 3) * discount;
+        else
+            return setPrice * 2 * Math.floor(this.quantity / 2) * discount;
     };
     SetItem.prototype.calulate = function () {
         var setPrice = (0, utils_1.getPricePerSet)(this.setColor);

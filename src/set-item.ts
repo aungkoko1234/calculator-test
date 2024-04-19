@@ -1,3 +1,4 @@
+import { BLACK_SET_DISCOUNT } from "./constant";
 import { SetColors, getDiscountSet, getPricePerSet } from "./utils";
 
 export class SetItem {
@@ -10,8 +11,12 @@ export class SetItem {
 
     private getBundleDiscount(setPrice: number) {
         const discount = getDiscountSet(this.setColor)
+        if(this.setColor === SetColors.BLACK_SET)
+        return setPrice * 3 * Math.floor(this.quantity /3) * discount
+        else
         return setPrice * 2 * Math.floor(this.quantity / 2) * discount
     }
+
 
 
     calulate(): number {

@@ -1,4 +1,4 @@
-import { SET_DISCOUNT } from "./constant";
+import { BLACK_SET_DISCOUNT, SET_DISCOUNT } from "./constant";
 import { SetColors, getDiscountSet, getPricePerSet } from "./utils"
 
 describe('Utility Function - get Price Per Set', () => {
@@ -11,12 +11,16 @@ describe('Utility Function - get Price Per Set', () => {
     });
 })
 
-describe('Utitliy Function - get Discount PerSet', () => {
+describe('Utitlity Function - get Discount PerSet', () => {
     test('Discount Eligible Color', () => {
         expect(getDiscountSet(SetColors.PINK_SET)).toEqual(SET_DISCOUNT)
     })
 
     test('Discount Not Eligible Color', () => {
         expect(getDiscountSet(SetColors.RED_SET)).toEqual(0)
+    })
+
+    test('Black Color Set',()=>{
+        expect(getDiscountSet(SetColors.BLACK_SET)).toEqual(BLACK_SET_DISCOUNT)
     })
 })
